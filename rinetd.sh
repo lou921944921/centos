@@ -1,5 +1,5 @@
 #!/bin/bash   
-yum update
+yum -y update
 yum -y install  gcc
 wget http://www.boutell.com/rinetd/http/rinetd.tar.gz 
 tar zxvf rinetd.tar.gz 
