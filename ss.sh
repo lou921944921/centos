@@ -1,7 +1,7 @@
 #!/bin/bash
 yum -y update
 yum -y install python-setuptools && easy_install pip 
-pip -y install shadowsocks
+pip install shadowsocks
 echo '{
     "server": "0.0.0.0",
     "server_port": 8388,
