@@ -19,3 +19,4 @@ echo '{
 }' > /etc/shadowsocks-libev/config.json
 ss-redir  -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid
 sed -i '2a ss-redir  -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid' /etc/rc.local
+yum clean all
