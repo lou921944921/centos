@@ -1,21 +1,22 @@
-
+#!/bin/bash
 #安装
-yum install git gcc openssl-devel
+yum -y update
+yum -y install git gcc openssl-devel
+yum -y install gcc automake autoconf libtool make
 git clone https://github.com/madeye/shadowsocks-libev.git
 cd shadowsocks-libev
 ./configure && make
 make install
 #配置
-mkdir -p /etc/shadowsocks
-cat << EOF > /etc/shadowsocks/config.json
+cat << EOF > /etc/ss-config.json
 {
  "server":"0.0.0.0",
- "server_port":10000,
+ "server_port":8388,
  "local_address": "127.0.0.1",
  "local_port":1080,
- "password":"yourpasswd",
- "timeout":300,
- "method":"aes-192-cfb",
+ "password":"123456",
+ "timeout":600,
+ "method":"aes-256-cfb",
  "fast_open": false,
  "workers": 1
 }
@@ -29,7 +30,7 @@ After=syslog.target network.target auditd.service
 [Service]
 Type=simple
 User=nobody
-ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks/config.json
+ExecStart=/usr/local/bin/ss-server -c /etc/ss-config.json
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID PrivateTmp=true
 
