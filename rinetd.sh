@@ -1,6 +1,7 @@
 #!/bin/bash   
 yum -y update
 yum -y install  gcc
+yum -y install net-tools
 wget http://www.boutell.com/rinetd/http/rinetd.tar.gz 
 tar zxvf rinetd.tar.gz 
 cd rinetd 
