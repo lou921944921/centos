@@ -40,3 +40,5 @@ EOF
 #启动
 systemctl enable shadowsocks
 systemctl start shadowsocks
+#清理
+yum clean all
