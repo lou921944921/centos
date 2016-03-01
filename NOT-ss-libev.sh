@@ -12,21 +12,14 @@ enabled_metadata=1' > /etc/yum.repos.d/shadowsocks-libev.repo
 yum -y install shadowsocks-libev
 echo '{
     "server": "0.0.0.0",
-    "server_port": 8388,
+    "server_port": 18999,
     "local_port": 1080,
-    "password": "123456",
+    "password": "lyj123456",
     "timeout": 600,
-    "method": "aes-256-cfb"
-}' > /etc/shadowsocks-libev/config.json
-#"local_address": "127.0.0.1",
- #"local_port":1080,
-# "password":"yourpasswd",
- #"timeout":300,
-# "method":"aes-192-cfb",
-# "fast_open": false,
-# "workers": 1
+    "method": "aes-256-cfb",
+}' > /etc/ss-config.json
 
-/usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json
+/usr/local/bin/ss-server -c /etc/ss-config.json
 sed -i '2a /usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json' /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 yum clean all
