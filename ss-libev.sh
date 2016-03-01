@@ -1,5 +1,6 @@
 #!/bin/bash
 yum -y update
+yum -y install git gcc openssl-devel
 echo  '[librehat-shadowsocks]
 name=Copr repo for shadowsocks owned by librehat
 baseurl=https://copr-be.cloud.fedoraproject.org/results/librehat/shadowsocks/epel-7-$basearch/
@@ -17,7 +18,15 @@ echo '{
     "timeout": 600,
     "method": "aes-256-cfb"
 }' > /etc/shadowsocks-libev/config.json
-ss-redir  -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid
-sed -i '2a ss-redir  -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid' /etc/rc.d/rc.local
+#"local_address": "127.0.0.1",
+ #"local_port":1080,
+# "password":"yourpasswd",
+ #"timeout":300,
+# "method":"aes-192-cfb",
+# "fast_open": false,
+# "workers": 1
+
+/usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json
+sed -i '2a /usr/local/bin/ss-server -c /etc/shadowsocks-libev/config.json' /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 yum clean all
