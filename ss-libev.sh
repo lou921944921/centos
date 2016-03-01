@@ -1,6 +1,7 @@
 #!/bin/bash
 #安装
 yum -y update
+yum -y install net-tools
 yum -y install git gcc openssl-devel
 yum -y install gcc automake autoconf libtool make
 git clone https://github.com/madeye/shadowsocks-libev.git
