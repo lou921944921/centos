@@ -3,6 +3,7 @@ touch /etc/ss-config.json
 echo '{
     "server": "0.0.0.0",
     "local_port": 1080,
+    "port_password":
     {
     "137":"123456",
     "138":"123456",
